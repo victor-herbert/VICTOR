@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+<body>
+  <h2>Register</h2>
+  
+  <label for="firstname">First Name</label>
+  <input type="text" id="firstname" required>
+  <br>
+
+  <label for="lastname">Last Name</label>
+  <input type="text" id="lastname" required>
+  <br>
+
+  <label for="username">Username</label>
+  <input type="text" id="username" required>
+  <br>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" required>
+  <br>
+
+  <label for="password">Password</label>
+  <input type="password" id="password" required>
+  <br><br>
+
+  <button onclick="register()">Submit</button>
+
+  <script>
+    function register() {
+    
+      const firstname = document.getElementById("firstname").value;
+      const lastname = document.getElementById("lastname").value;
+      const username = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      
+      if (!firstname || !lastname || !username || !email || !password) {
+        alert("Please fill in all fields!");
+        return;
+      }
+
+   
+      localStorage.setItem("firstname", firstname);
+      localStorage.setItem("lastname", lastname);
+      localStorage.setItem("username", username);
+      localStorage.setItem("email", email);
+      localStorage.setItem("password", password);
+
+      alert("Registration successful! Please login.");
+      window.location.href = "index.html"; 
+    }
+  </script>
+</body>
+</html>

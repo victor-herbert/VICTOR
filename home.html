@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Soko</title>
+  <style>
+    /* Reset some basics */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      color: #333;
+    }
+
+    /* Navigation bar */
+    nav {
+      background: #222;
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav h1 {
+      font-size: 22px;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    /* Hero section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("a.png");
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+    }
+
+    /* Search section */
+    .search-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    #searchBar {
+      width: 350px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      outline: none;
+      margin-bottom: 20px;
+      transition: border 0.3s;
+    }
+
+    #searchBar:focus {
+      border: 1px solid #2575fc;
+    }
+
+    ul {
+      list-style: none;
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    li {
+      padding: 12px;
+      margin-bottom: 8px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: none;
+      transition: transform 0.2s;
+    }
+
+    li:hover {
+      transform: translateX(5px);
+      background: #f0f8ff;
+    }
+
+    /* Offers marquee */
+    .offers {
+      background: black;
+      color: white;
+      padding: 10px;
+      margin: 20px 0;
+      font-size: 20px;
+    }
+
+    /* Slideshow box */
+    .slider {
+      width: 100%;
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      animation: slider 20s infinite;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    @keyframes slider {
+      0%   { background-image: url("a.png"); }
+      25%  { background-image: url("b.png"); }
+      50%  { background-image: url("c.png"); }
+      75%  { background-image: url("d.png"); }
+      100% { background-image: url("a.png"); }
+    }
+
+    /* Buttons */
+    .btns {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .btns button {
+      background: #2575fc;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btns button:hover {
+      background: #6a11cb;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #aaa;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <h1>Victor's Car Limited</h1>
+    <div>
+      <a href="home.html">Dashboard</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="login.html">Login</a>
+    </div>
+  </nav>
+
+  <!-- Hero section -->
+  <section class="hero">
+    <h2>WELCOME TO VICTOR'S CAR LIMITED</h2>
+    <p>Ride with happiness – we have all types of cars you need</p>
+    <p>Search and confirm your dream car, then proceed to view it in our gallery.</p>
+  </section>
+
+  <!-- Search section -->
+  <section class="search-section">
+    <input type="text" id="searchBar" placeholder="Search for a car..." onkeyup="searchCars()">
+    <ul id="carList">
+      <li>Rolls Royce</li>
+      <li>Lamborghini</li>
+      <li>Ferrari</li>
+      <li>Range Rover</li>
+      <li>Nissan GTR</li>
+    </ul>
+  </section>
+
+  <!-- Offers -->
+  <marquee class="offers"><strong>🔥 WE HAVE OFFERS EVERY MONTH 🔥</strong></marquee>
+
+  <!-- Slideshow -->
+  <div class="slider"></div>
+
+  <!-- Navigation buttons -->
+  <div class="btns">
+    <button onclick="location.href='login.html'">Back</button>
+    <button onclick="location.href='gallery.html'">Next</button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Victor's Car Limited | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    function searchCars() {
+      let input = document.getElementById("searchBar").value.toLowerCase();
+      let cars = document.getElementById("carList").getElementsByTagName("li");
+
+      for (let i = 0; i < cars.length; i++) {
+        let car = cars[i].textContent.toLowerCase();
+        if (input && car.includes(input)) {
+          cars[i].style.display = "block"; 
+        } else {
+          cars[i].style.display = "none"; 
+        }
+      }
+    }
+  </script>
+</body>
+</html>

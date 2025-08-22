@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Order</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #141e30, #243b55);
+      margin: 0;
+      padding: 20px;
+      color: #fff;
+      text-align: center;
+    }
+
+    a {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ol {
+      text-align: left;
+      margin: 20px auto;
+      max-width: 400px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      list-style: decimal inside;
+    }
+    ol li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    h2 {
+      margin-top: 30px;
+      font-size: 28px;
+      color: #ffd700;
+    }
+
+    h3 {
+      margin: 15px 0 5px;
+      font-size: 22px;
+      color: #fff;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+      border-radius: 12px;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: none;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button[type="submit"] {
+      background: #ffd700;
+      color: #000;
+    }
+    button[type="submit"]:hover {
+      background: #ffc107;
+    }
+
+    .nav-buttons {
+      margin-top: 20px;
+    }
+    .nav-buttons button {
+      background: #444;
+      color: #fff;
+      margin: 0 5px;
+    }
+    .nav-buttons button:hover {
+      background: #666;
+    }
+  </style>
+</head>
+<body>
+  
+  <a href="order.html">⬅ Order Page</a>
+
+  <ol>
+    <li>NISSAN GTR = $560,000</li>
+    <li>FERRARI 488 = $500,000</li>
+    <li>RANGE ROVER = $400,000</li>
+    <li>ROLLS ROYCE = $1,000,000</li>
+  </ol>
+
+  <h2>Order Form</h2>
+
+  <!-- Car details will appear here -->
+  <h3 id="carTitle"></h3>
+  <p><strong>Price:</strong> <span id="carPrice"></span></p>
+
+  <!-- Order form -->
+  <form action="finish.html" method="get">
+    <!-- Hidden field to keep car name -->
+    <input type="hidden" id="carName" name="carName">
+
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Your Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" name="phone" required>
+
+    <button type="submit">Place Order</button>
+  </form>
+
+  <div class="nav-buttons">
+    <button onclick="history.back()">Back</button>
+    <button onclick="location.href='finish.html'">Next</button>
+  </div>
+
+  <script>
+    // Car data with prices
+    const carPrices = {
+      a: { title: "NISSAN GTR", price: "$560,000" },
+      b: { title: "FERRARI 488", price: "$500,000" },
+      c: { title: "RANGE ROVER", price: "$400,000" },
+      d: { title: "ROLLS ROYCE", price: "$1,000,000" }
+    };
+
+    // Get car key from URL
+    const params = new URLSearchParams(window.location.search);
+    const carKey = params.get("car");
+
+    if (carKey && carPrices[carKey]) {
+      document.getElementById("carTitle").textContent = carPrices[carKey].title;
+      document.getElementById("carPrice").textContent = carPrices[carKey].price;
+      document.getElementById("carName").value = carPrices[carKey].title;
+    } else {
+      document.getElementById("carTitle").textContent = "Car not found!";
+      document.getElementById("carPrice").textContent = "";
+    }
+  </script>
+
+</body>
+</html>
